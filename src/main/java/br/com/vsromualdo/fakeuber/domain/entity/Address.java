@@ -1,8 +1,10 @@
 package br.com.vsromualdo.fakeuber.domain.entity;
 
+import br.com.vsromualdo.fakeuber.domain.vo.ZipCodeVO;
+
 public class Address {
 
-	private String zipCode;
+	private ZipCodeVO zipCode;
 	private String address;
 	private String complement;
 	private String unit;
@@ -16,7 +18,7 @@ public class Address {
 	}
 	public Address(String zipCode, String address, String complement, String unit, String neighborhood, String locality,
 			String federalUnitCode, String federalUnit, String region) {
-		this.zipCode = zipCode;
+		this.zipCode = new ZipCodeVO(zipCode);
 		this.address = address;
 		this.complement = complement;
 		this.unit = unit;
@@ -27,7 +29,7 @@ public class Address {
 		this.region = region;
 	}
 	public String getZipCode() {
-		return zipCode;
+		return zipCode.getValue();
 	}
 	public String getAddress() {
 		return address;

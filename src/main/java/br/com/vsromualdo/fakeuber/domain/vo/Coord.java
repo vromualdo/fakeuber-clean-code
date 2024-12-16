@@ -8,20 +8,20 @@ public class Coord {
 	private BigDecimal longitude;
 	
 	public Coord(BigDecimal latitude, BigDecimal longitude) {
-		if (!this.isLatidudeValid(latitude)){
+		if (!this.isValidLatidude(latitude)){
             throw new UnsupportedOperationException("Invalid latitude");
         }
-		if (!this.isLongitudeValid(longitude)){
+		if (!this.isValidLongitude(longitude)){
             throw new UnsupportedOperationException("Invalid longitued");
         }
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 	
-	private boolean isLatidudeValid(BigDecimal latitude) {
+	private boolean isValidLatidude(BigDecimal latitude) {
 		return (latitude.compareTo(BigDecimal.valueOf(-90)) == -1 || latitude.compareTo(BigDecimal.valueOf(90)) == 1 );
 	}
-	private boolean isLongitudeValid(BigDecimal longitude) {
+	private boolean isValidLongitude(BigDecimal longitude) {
 		return (longitude.compareTo(BigDecimal.valueOf(-180)) == -1 || latitude.compareTo(BigDecimal.valueOf(180)) == 1 );
 	}
 	
