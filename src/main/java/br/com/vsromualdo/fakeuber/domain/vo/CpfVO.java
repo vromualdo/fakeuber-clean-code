@@ -1,11 +1,22 @@
-package br.com.vsromualdo.fakeuber.domain.util;
+package br.com.vsromualdo.fakeuber.domain.vo;
 
-public final class ValidateCPF {
+public class CpfVO {
 
-	private ValidateCPF() {
+	private String value;
+
+	public CpfVO(String cpf) {
+		super();
+		if (!isValidCpf(cpf)){
+            throw new UnsupportedOperationException("Invalid cpf");
+        }
+		this.value = cpf;
 	}
 
-	public static boolean execute(String cpf) {
+	public String getValue() {
+		return value;
+	}
+	
+	private static boolean isValidCpf(String cpf) {
 		if(cpf == null) {
 			return false;
 		}

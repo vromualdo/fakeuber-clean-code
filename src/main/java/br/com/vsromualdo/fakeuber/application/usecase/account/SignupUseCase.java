@@ -4,7 +4,7 @@ import br.com.vsromualdo.fakeuber.application.gateway.integration.MailerIntegrat
 import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountRepositoryGateway;
 import br.com.vsromualdo.fakeuber.application.usecase.account.dto.SignupInputDTO;
 import br.com.vsromualdo.fakeuber.application.usecase.account.dto.SignupOutputDTO;
-import br.com.vsromualdo.fakeuber.domain.Account;
+import br.com.vsromualdo.fakeuber.domain.entity.Account;
 import br.com.vsromualdo.fakeuber.domain.exception.DuplicateAccountException;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.dto.MailerInputDTO;
 import lombok.extern.slf4j.Slf4j;

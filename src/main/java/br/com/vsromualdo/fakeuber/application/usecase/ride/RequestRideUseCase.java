@@ -5,7 +5,7 @@ import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountReposito
 import br.com.vsromualdo.fakeuber.application.gateway.repository.RideRepositoryGateway;
 import br.com.vsromualdo.fakeuber.application.usecase.ride.dto.RideInputDTO;
 import br.com.vsromualdo.fakeuber.application.usecase.ride.dto.RideOutputDTO;
-import br.com.vsromualdo.fakeuber.domain.Ride;
+import br.com.vsromualdo.fakeuber.domain.entity.Ride;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.queue.dto.DestinationInputDTO;
 
 public class RequestRideUseCase {

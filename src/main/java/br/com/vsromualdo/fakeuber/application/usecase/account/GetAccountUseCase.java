@@ -2,7 +2,7 @@ package br.com.vsromualdo.fakeuber.application.usecase.account;
 
 import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountRepositoryGateway;
 import br.com.vsromualdo.fakeuber.application.usecase.account.dto.AccountOutputDTO;
-import br.com.vsromualdo.fakeuber.domain.Account;
+import br.com.vsromualdo.fakeuber.domain.entity.Account;
 import br.com.vsromualdo.fakeuber.domain.exception.AccountDoesNotExistException;
 
 public class GetAccountUseCase {

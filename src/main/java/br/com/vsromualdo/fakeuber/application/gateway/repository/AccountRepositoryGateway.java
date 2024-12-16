@@ -1,6 +1,6 @@
 package br.com.vsromualdo.fakeuber.application.gateway.repository;
 
-import br.com.vsromualdo.fakeuber.domain.Account;
+import br.com.vsromualdo.fakeuber.domain.entity.Account;
 
 public interface AccountRepositoryGateway {
 

@@ -3,7 +3,7 @@ package br.com.vsromualdo.fakeuber.infrastructure.mapper;
 import java.util.UUID;
 
 import br.com.vsromualdo.fakeuber.application.usecase.account.dto.AccountOutputDTO;
-import br.com.vsromualdo.fakeuber.domain.Account;
+import br.com.vsromualdo.fakeuber.domain.entity.Account;
 import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountResponseDTO;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.AccountSchema;
 

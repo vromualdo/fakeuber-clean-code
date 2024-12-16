@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 import br.com.vsromualdo.fakeuber.application.gateway.repository.RideRepositoryGateway;
-import br.com.vsromualdo.fakeuber.domain.Ride;
+import br.com.vsromualdo.fakeuber.domain.entity.Ride;
 import br.com.vsromualdo.fakeuber.infrastructure.mapper.RideMapper;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.RideSchemaRepository;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.RideSchema;

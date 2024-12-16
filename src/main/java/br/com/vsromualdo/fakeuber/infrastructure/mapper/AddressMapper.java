@@ -1,6 +1,6 @@
 package br.com.vsromualdo.fakeuber.infrastructure.mapper;
 
-import br.com.vsromualdo.fakeuber.domain.Address;
+import br.com.vsromualdo.fakeuber.domain.entity.Address;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.dto.ViaCepOutputDTO;
 
 public final class AddressMapper {

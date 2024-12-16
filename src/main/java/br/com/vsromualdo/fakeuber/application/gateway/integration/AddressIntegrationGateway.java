@@ -1,6 +1,6 @@
 package br.com.vsromualdo.fakeuber.application.gateway.integration;
 
-import br.com.vsromualdo.fakeuber.domain.Address;
+import br.com.vsromualdo.fakeuber.domain.entity.Address;
 
 public interface AddressIntegrationGateway {
 

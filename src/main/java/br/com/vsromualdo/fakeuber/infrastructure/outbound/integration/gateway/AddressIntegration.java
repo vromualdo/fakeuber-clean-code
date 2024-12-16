@@ -3,7 +3,7 @@ package br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.gateway;
 import org.springframework.stereotype.Component;
 
 import br.com.vsromualdo.fakeuber.application.gateway.integration.AddressIntegrationGateway;
-import br.com.vsromualdo.fakeuber.domain.Address;
+import br.com.vsromualdo.fakeuber.domain.entity.Address;
 import br.com.vsromualdo.fakeuber.infrastructure.mapper.AddressMapper;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.ViaCepClient;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.dto.ViaCepOutputDTO;

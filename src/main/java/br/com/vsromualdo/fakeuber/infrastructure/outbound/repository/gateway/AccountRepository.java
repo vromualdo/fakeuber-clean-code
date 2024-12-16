@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountRepositoryGateway;
-import br.com.vsromualdo.fakeuber.domain.Account;
+import br.com.vsromualdo.fakeuber.domain.entity.Account;
 import br.com.vsromualdo.fakeuber.infrastructure.mapper.AccountMapper;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.AccountSchemaRepository;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.AccountSchema;
