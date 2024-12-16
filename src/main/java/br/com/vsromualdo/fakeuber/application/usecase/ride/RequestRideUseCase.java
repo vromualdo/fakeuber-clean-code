@@ -3,9 +3,9 @@ package br.com.vsromualdo.fakeuber.application.usecase.ride;
 import br.com.vsromualdo.fakeuber.application.gateway.queue.TravelDestinationQueueGateway;
 import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountRepositoryGateway;
 import br.com.vsromualdo.fakeuber.application.gateway.repository.RideRepositoryGateway;
+import br.com.vsromualdo.fakeuber.application.usecase.ride.dto.RideInputDTO;
 import br.com.vsromualdo.fakeuber.application.usecase.ride.dto.RideOutputDTO;
 import br.com.vsromualdo.fakeuber.domain.Ride;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.ride.dto.RideRequestDTO;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.queue.dto.DestinationInputDTO;
 
 public class RequestRideUseCase {
@@ -23,7 +23,7 @@ public class RequestRideUseCase {
 		this.travelDestinationQueueGateway = travelDestinationQueueGateway;
 	}
 	
-	public RideOutputDTO execute(RideRequestDTO input) throws Exception{
+	public RideOutputDTO execute(RideInputDTO input) throws Exception{
 		var accountData = this.accountRepositoryGateway.getAccountById(input.getPassengerId());
 		if (!accountData.isPassenger()) {
 			throw new Exception("Account must be from a passenger");

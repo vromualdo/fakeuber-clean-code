@@ -37,7 +37,7 @@ public class AccountController {
 		
 		AccountResponseDTO result = new AccountResponseDTO();
 		result.setAccountId("223232");
-		result.setEmail("vsromualdo@gmail.com");
+		result.setEmail("vsr@gmail.com");
 		
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	} 
