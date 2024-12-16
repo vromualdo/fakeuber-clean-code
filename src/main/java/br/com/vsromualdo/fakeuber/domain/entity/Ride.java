@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.vsromualdo.fakeuber.domain.vo.Coord;
+
 public class Ride {
 
     private String rideId;
     private String passengerId;
     private String driverId;
-    private BigDecimal fromLat;
-    private BigDecimal fromLong;
-    private BigDecimal toLat;
-    private BigDecimal toLong;
+    private Coord fromLatLong;
+    private Coord toLatLong;
     private BigDecimal fare;
     private BigDecimal distance;
     private String status;
@@ -25,10 +25,8 @@ public class Ride {
 		this.rideId = rideId;
 		this.passengerId = passengerId;
 		this.driverId = driverId;
-		this.fromLat = fromLat;
-		this.fromLong = fromLong;
-		this.toLat = toLat;
-		this.toLong = toLong;
+		this.fromLatLong = new Coord(fromLat, fromLong);
+		this.toLatLong = new Coord(toLat, toLong);
 		this.fare = fare;
 		this.distance = distance;
 		this.status = status;
@@ -59,19 +57,19 @@ public class Ride {
 	}
 
 	public BigDecimal getFromLat() {
-		return fromLat;
+		return fromLatLong.getLatitude();
 	}
 
 	public BigDecimal getFromLong() {
-		return fromLong;
+		return fromLatLong.getLongitude();
 	}
 
 	public BigDecimal getToLat() {
-		return toLat;
+		return toLatLong.getLatitude();
 	}
 
 	public BigDecimal getToLong() {
-		return toLong;
+		return toLatLong.getLongitude();
 	}
 
 	public BigDecimal getFare() {
