@@ -1,0 +1,76 @@
+server:
+  port: 8080
+  servlet:
+    context-path : /fakeuber
+
+logging:
+  level:
+    br: DEBUG #TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+    #com.zaxxer: DEBUG
+    #$org.hibernate: DEBUG
+    #o.hibernate: DEBUG 
+
+spring:
+  application:
+    name: fakeuber
+  config:
+    activate:
+      on-profile:
+      - local
+  jta:
+    atomikos:
+      datasource:
+        min-pool-size: 3
+        max-pool-size: 5
+      connectionfactory:
+        min-pool-size: 3
+        max-pool-size: 5
+  #data:
+  #  redis:
+  #    host: 192.168.0.2
+  #    port: 6379
+      
+      
+---
+spring:
+  profiles:
+    active:
+    - local
+  datasource:
+    url: jdbc:postgresql://192.168.152.233:5432/app?currentSchema=ccca
+    username: postgres
+    password: 123456
+    driverClassName: org.postgresql.Driver
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 5
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+      properties:
+        hibernate:
+          id:
+            new_generator_mappings: false
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true
+          jdbc:
+            lob:
+              non_contextual_creation: true
+  #rabbitmq:
+  #  addresses: 127.0.0.1:5672
+
+rabbit:
+    queues:
+      travel-destination: travel-destination
+
+integration:
+  client:
+    viacep: https://viacep.com.br/ws
+        
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - homologacao
+  
+###implementação homologacao
