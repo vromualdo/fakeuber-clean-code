@@ -11,8 +11,19 @@ public class DestinationInputDTO {
 	private BigDecimal fromLongitude;
     private BigDecimal toLatitude;
     private BigDecimal toLongitude;
-	
-    public String getRideId() {
+    
+    public DestinationInputDTO(String rideId, String passengerId, String driverId, BigDecimal fromLatitude,
+			BigDecimal fromLongitude, BigDecimal toLatitude, BigDecimal toLongitude) {
+		super();
+		this.rideId = rideId;
+		this.passengerId = passengerId;
+		this.driverId = driverId;
+		this.fromLatitude = fromLatitude;
+		this.fromLongitude = fromLongitude;
+		this.toLatitude = toLatitude;
+		this.toLongitude = toLongitude;
+	}
+	public String getRideId() {
 		return rideId;
 	}
 	public void setRideId(String rideId) {

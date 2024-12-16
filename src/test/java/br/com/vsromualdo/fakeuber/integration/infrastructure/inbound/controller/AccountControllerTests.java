@@ -16,7 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.com.vsromualdo.fakeuber.FakeUberCleanCodeApplication;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountOutputDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountResponseDTO;
 
 @SpringBootTest(classes = FakeUberCleanCodeApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AccountControllerTests {
@@ -38,8 +38,8 @@ public class AccountControllerTests {
 	void contarEncontradaCodigo200() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
-		ResponseEntity<AccountOutputDTO> response = testRestTemplate
-				.exchange(endpoint, HttpMethod.GET, entity, AccountOutputDTO.class);
+		ResponseEntity<AccountResponseDTO> response = testRestTemplate
+				.exchange(endpoint, HttpMethod.GET, entity, AccountResponseDTO.class);
 		assertTrue(response.getStatusCode().isSameCodeAs(HttpStatus.OK));
 		
 	}
@@ -50,7 +50,7 @@ public class AccountControllerTests {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
 		//ResponseEntity<Account> response = testRestTemplate
 		//		.exchange(url, HttpMethod.GET, entity, Account.class);
-		AccountOutputDTO accountResult = testRestTemplate.getForObject(endpoint, AccountOutputDTO.class);
+		AccountResponseDTO accountResult = testRestTemplate.getForObject(endpoint, AccountResponseDTO.class);
 		assertEquals(accountResult.getEmail(), "vsromualdo@gmail.com");
 	}
 	
@@ -58,7 +58,7 @@ public class AccountControllerTests {
 	void contarNaoEncontrada() {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
-		AccountOutputDTO accountResult = testRestTemplate.getForObject(endpoint, AccountOutputDTO.class);
+		AccountResponseDTO accountResult = testRestTemplate.getForObject(endpoint, AccountResponseDTO.class);
 		assertNotEquals(accountResult.getEmail(), "xvsromualdo@gmail.com");
 	}
 }

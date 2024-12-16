@@ -8,6 +8,7 @@ import br.com.vsromualdo.fakeuber.application.usecase.account.SignupUseCase;
 import br.com.vsromualdo.fakeuber.application.usecase.ride.GetRideUseCase;
 import br.com.vsromualdo.fakeuber.application.usecase.ride.RequestRideUseCase;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.gateway.MailerIntegration;
+import br.com.vsromualdo.fakeuber.infrastructure.outbound.queue.gateway.TravelDestinationQueue;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.gateway.AccountRepository;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.gateway.RideRepository;
 
@@ -25,8 +26,8 @@ public class BeanConfig {
     }
 	
 	@Bean
-    public RequestRideUseCase requestRideUseCase(RideRepository rideRepository, AccountRepository accountRepository) {
-        return new RequestRideUseCase(rideRepository, accountRepository);
+    public RequestRideUseCase requestRideUseCase(RideRepository rideRepository, AccountRepository accountRepository, TravelDestinationQueue travelDestinationQueue) {
+        return new RequestRideUseCase(rideRepository, accountRepository, travelDestinationQueue);
     }
 	
 	@Bean

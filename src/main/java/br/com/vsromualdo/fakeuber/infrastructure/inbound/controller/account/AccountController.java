@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.vsromualdo.fakeuber.application.usecase.account.GetAccountUseCase;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountOutputDTO;
+import br.com.vsromualdo.fakeuber.application.usecase.account.dto.AccountOutputDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountResponseDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.mapper.AccountMapper;
 
 @RestController
 @RequestMapping("/v1")
@@ -24,19 +26,20 @@ public class AccountController {
 	}
 
 	@GetMapping(path="/accounts/{accountId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AccountOutputDTO> get(@PathVariable(name = "accountId") String accountId) throws Exception{
-		AccountOutputDTO accountResult = this.getAccountUseCase.execute(accountId);
+	public ResponseEntity<AccountResponseDTO> get(@PathVariable(name = "accountId") String accountId) throws Exception{
+		AccountOutputDTO accountOutputDTO = this.getAccountUseCase.execute(accountId);
+		AccountResponseDTO accountResult = AccountMapper.outputToResponse(accountOutputDTO);
 		return new ResponseEntity<>(accountResult, HttpStatus.OK);
 	}
 	
 	@GetMapping("/accounts")
-	public ResponseEntity<AccountOutputDTO> get(){
+	public ResponseEntity<AccountResponseDTO> get(){
 		
-		AccountOutputDTO result = new AccountOutputDTO();
+		AccountResponseDTO result = new AccountResponseDTO();
 		result.setAccountId("223232");
 		result.setEmail("vsromualdo@gmail.com");
 		
-		return new ResponseEntity<AccountOutputDTO>(result, HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	} 
 	
 	

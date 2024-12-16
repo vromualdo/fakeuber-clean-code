@@ -2,9 +2,7 @@ package br.com.vsromualdo.fakeuber.infrastructure.mapper;
 
 import java.util.UUID;
 
-import br.com.vsromualdo.fakeuber.domain.Account;
 import br.com.vsromualdo.fakeuber.domain.Ride;
-import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.AccountSchema;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.RideSchema;
 
 public final class RideMapper {

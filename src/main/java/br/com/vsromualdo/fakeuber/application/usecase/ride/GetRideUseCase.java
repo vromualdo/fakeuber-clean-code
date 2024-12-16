@@ -2,7 +2,7 @@ package br.com.vsromualdo.fakeuber.application.usecase.ride;
 
 import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountRepositoryGateway;
 import br.com.vsromualdo.fakeuber.application.gateway.repository.RideRepositoryGateway;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.ride.dto.RideOutputDTO;
+import br.com.vsromualdo.fakeuber.application.usecase.ride.dto.RideOutputDTO;
 
 public class GetRideUseCase {
 

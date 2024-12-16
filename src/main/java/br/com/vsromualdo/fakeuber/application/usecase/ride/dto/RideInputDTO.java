@@ -1,4 +1,4 @@
-package br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.ride.dto;
+package br.com.vsromualdo.fakeuber.application.usecase.ride.dto;
 
 import java.math.BigDecimal;
 

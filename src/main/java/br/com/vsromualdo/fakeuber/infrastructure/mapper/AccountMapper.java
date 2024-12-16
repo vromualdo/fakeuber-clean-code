@@ -1,9 +1,11 @@
 package br.com.vsromualdo.fakeuber.infrastructure.mapper;
 
-import br.com.vsromualdo.fakeuber.domain.Account;
-import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.AccountSchema;
-
 import java.util.UUID;
+
+import br.com.vsromualdo.fakeuber.application.usecase.account.dto.AccountOutputDTO;
+import br.com.vsromualdo.fakeuber.domain.Account;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountResponseDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.outbound.repository.schema.AccountSchema;
 
 public final class AccountMapper {
     private AccountMapper() {
@@ -44,5 +46,21 @@ public final class AccountMapper {
 		        accountSchema.getCreationDate()
         		);
     }
+
+	public static AccountResponseDTO outputToResponse(AccountOutputDTO accountOutputDTO) {
+		if(accountOutputDTO == null){
+            return null;
+        }
+		return new AccountResponseDTO(
+				accountOutputDTO.getAccountId(),
+				accountOutputDTO.getName(),
+				accountOutputDTO.getEmail(),
+				accountOutputDTO.getCpf(),
+				accountOutputDTO.getCarPlate(),
+				accountOutputDTO.getPassword(),
+				accountOutputDTO.isPassenger(),
+				accountOutputDTO.isDriver()
+        		);
+	}
     
 }

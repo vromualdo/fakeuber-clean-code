@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.vsromualdo.fakeuber.application.usecase.bankInvoice.FileBankInvoiceUseCase;
 import br.com.vsromualdo.fakeuber.infrastructure.inbound.listener.bankinvoice.dto.SegmentADTO;
+import br.com.vsromualdo.fakeuber.infrastructure.mapper.SegmentMapper;
 
 public class FileBankInvoiceListener {
 
@@ -14,6 +15,6 @@ public class FileBankInvoiceListener {
 	}
 	
 	public void listenerFile(List<SegmentADTO> segments) {
-		this.bankInvoiceUseCase.execute(segments);
+		this.bankInvoiceUseCase.execute(SegmentMapper.segmentRequestToSegmentInput(segments));
 	}
 }

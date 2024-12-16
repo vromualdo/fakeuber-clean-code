@@ -2,10 +2,10 @@ package br.com.vsromualdo.fakeuber.application.usecase.account;
 
 import br.com.vsromualdo.fakeuber.application.gateway.integration.MailerIntegrationGateway;
 import br.com.vsromualdo.fakeuber.application.gateway.repository.AccountRepositoryGateway;
+import br.com.vsromualdo.fakeuber.application.usecase.account.dto.SignupInputDTO;
+import br.com.vsromualdo.fakeuber.application.usecase.account.dto.SignupOutputDTO;
 import br.com.vsromualdo.fakeuber.domain.Account;
 import br.com.vsromualdo.fakeuber.domain.exception.DuplicateAccountException;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupInputDTO;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupOutputDTO;
 import br.com.vsromualdo.fakeuber.infrastructure.outbound.integration.dto.MailerInputDTO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +21,7 @@ public class SignupUseCase {
     }
 
     public SignupOutputDTO execute(SignupInputDTO input) throws Exception{
+    	log.info("input {}", input);
         Account existingAccount = this.accountRepository.getAccountByEmail(input.getEmail());
 		if (existingAccount != null){
             throw new DuplicateAccountException("Duplicated account " + existingAccount.getAccountId());

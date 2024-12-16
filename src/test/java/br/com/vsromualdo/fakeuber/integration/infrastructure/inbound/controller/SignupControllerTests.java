@@ -18,9 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.com.vsromualdo.fakeuber.FakeUberCleanCodeApplication;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountOutputDTO;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupInputDTO;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupOutputDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto.AccountResponseDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupRequestDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupResponseDTO;
 
 @SpringBootTest(classes = FakeUberCleanCodeApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SignupControllerTests {
@@ -45,7 +45,7 @@ public class SignupControllerTests {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json");
 		var random = new Random(port).nextLong();
-		var input = new SignupInputDTO(
+		var input = new SignupRequestDTO(
 				"Vagner R", 
 				"vsr"+random+"@gmail.com", 
 				"97456321558", 
@@ -54,12 +54,12 @@ public class SignupControllerTests {
 				true,
 				false
 				);
-		HttpEntity<SignupInputDTO> entity = new HttpEntity<>(input, headers);
-		ResponseEntity<SignupOutputDTO> response = testRestTemplate.exchange(endpoint, HttpMethod.POST, entity, SignupOutputDTO.class);
+		HttpEntity<SignupRequestDTO> entity = new HttpEntity<>(input, headers);
+		ResponseEntity<SignupResponseDTO> response = testRestTemplate.exchange(endpoint, HttpMethod.POST, entity, SignupResponseDTO.class);
 		assertTrue(response.getStatusCode().isSameCodeAs(HttpStatus.OK));
 		assertNotNull(response.getBody().getAccountId());
 		String endpointGetAccount = endpointGet + "/" + response.getBody().getAccountId();
-		AccountOutputDTO accountResult = testRestTemplate.getForObject(endpointGetAccount, AccountOutputDTO.class);
+		AccountResponseDTO accountResult = testRestTemplate.getForObject(endpointGetAccount, AccountResponseDTO.class);
 		assertEquals(accountResult.getName(), input.getName());
 		assertEquals(accountResult.getEmail(), input.getEmail());
 		assertEquals(accountResult.getCpf(), input.getCpf());

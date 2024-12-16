@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.vsromualdo.fakeuber.application.usecase.account.SignupUseCase;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupInputDTO;
-import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupOutputDTO;
+import br.com.vsromualdo.fakeuber.application.usecase.account.dto.SignupOutputDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupRequestDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.signup.dto.SignupResponseDTO;
+import br.com.vsromualdo.fakeuber.infrastructure.mapper.SignupMapper;
 
 @RestController
 @RequestMapping("/v1")
@@ -23,9 +25,9 @@ public class SignupController {
 	}
 	
 	@PostMapping(path="/signup", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<SignupOutputDTO> create(@RequestBody SignupInputDTO input) throws Exception {
-		SignupOutputDTO output = signupUseCase.execute(input);
-        return new ResponseEntity<>(output, HttpStatus.OK);
+    public ResponseEntity<SignupResponseDTO> create(@RequestBody SignupRequestDTO request) throws Exception {
+		SignupOutputDTO outputDTO = signupUseCase.execute(SignupMapper.requestToInput(request));
+        return new ResponseEntity<>(SignupMapper.outputToResponse(outputDTO), HttpStatus.OK);
     }
 	
 }

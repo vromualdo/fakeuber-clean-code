@@ -1,4 +1,4 @@
-package br.com.vsromualdo.fakeuber.infrastructure.inbound.controller.account.dto;
+package br.com.vsromualdo.fakeuber.application.usecase.account.dto;
 
 public class AccountInputDTO {
 
