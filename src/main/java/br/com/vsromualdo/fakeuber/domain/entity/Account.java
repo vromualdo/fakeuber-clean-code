@@ -6,6 +6,7 @@ import br.com.vsromualdo.fakeuber.domain.vo.CarPlateVO;
 import br.com.vsromualdo.fakeuber.domain.vo.CpfVO;
 import br.com.vsromualdo.fakeuber.domain.vo.EmailVO;
 import br.com.vsromualdo.fakeuber.domain.vo.NameVO;
+import br.com.vsromualdo.fakeuber.domain.vo.PasswordVO;
 
 public class Account {
 
@@ -14,7 +15,7 @@ public class Account {
     private EmailVO email;
     private CpfVO cpf;
     private CarPlateVO carPlate;
-    private String password;
+    private PasswordVO password;
     private boolean isPassenger;
     private boolean isDriver;
     private LocalDateTime creationDate;
@@ -25,7 +26,7 @@ public class Account {
         this.email = new EmailVO(email);
         this.cpf = new CpfVO(cpf);
         this.carPlate = (isDriver)? new CarPlateVO(carPlate) : null;
-        this.password = password;
+        this.password = new PasswordVO(password);
         this.isPassenger = isPassenger;
         this.isDriver = isDriver;
         this.creationDate = creationDate;
@@ -61,7 +62,7 @@ public class Account {
 	}
 
 	public String getPassword() {
-		return password;
+		return password.getValue();
 	}
 
 	public boolean isPassenger() {

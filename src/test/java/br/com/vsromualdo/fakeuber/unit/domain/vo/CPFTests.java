@@ -1,14 +1,15 @@
-package br.com.vsromualdo.fakeuber.unit.domain.util;
+package br.com.vsromualdo.fakeuber.unit.domain.vo;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import br.com.vsromualdo.fakeuber.domain.entity.Account;
-import br.com.vsromualdo.fakeuber.domain.util.ValidateCPF;
+import br.com.vsromualdo.fakeuber.domain.vo.CpfVO;
 
-class ValidateCpfTests {
+class CPFTests {
 
 	@Test
 	public void validCPF() {
@@ -19,7 +20,7 @@ class ValidateCpfTests {
 				"87748248800"
 		};
 		for (String cpf : validCPFs) {
-			assertTrue(ValidateCPF.execute(cpf));
+			assertEquals(new CpfVO(cpf).getValue(), cpf);
 		}
 	}
 	
@@ -42,7 +43,11 @@ class ValidateCpfTests {
 				"01234567890123"
 		};
 		for (String cpf : invalidCPFs) {
-			assertFalse(ValidateCPF.execute(cpf));
+			
+			UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class, () -> {
+				new CpfVO(cpf);
+			});
+			assertEquals("Invalid cpf", exception.getMessage());
 		}
 	}
 	
